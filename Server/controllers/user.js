@@ -37,6 +37,7 @@ exports.register = async (req, res) => {
       let payload = {
         id: registeredUser._id,
         user_type_id: req.body.user_type_id || 0,
+        user_name: req.body.name
       };
       const token = jwt.sign(payload, config.TOKEN_SECRET);
       res.cookie("auth-token", token).redirect("/");
@@ -57,7 +58,7 @@ exports.login = async (req, res) => {
         if (!validPass)
           return res.status(401).send("Mobile/Email or Password is wrong");
 
-        let payload = { id: user._id, user_type_id: user.user_type_id };
+        let payload = { id: user._id, user_type_id: user.user_type_id, user_name: user.name };
         const token = jwt.sign(payload, config.TOKEN_SECRET);
 
         res.status(200).cookie("auth-token", token).redirect("/");

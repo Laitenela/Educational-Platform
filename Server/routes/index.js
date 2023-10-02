@@ -4,7 +4,7 @@ var router = express.Router();
 
 router.get("/", verifyUserToken, function (req, res, next) {
   console.log(req.user);
-  res.render(req.user ? "index" : "landing", { title: "Express" });
+  res.render(req.user ? "index" : "landing", { title: "Express", name: req.user?.user_name });
 });
 
 module.exports = router;

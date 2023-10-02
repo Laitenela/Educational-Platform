@@ -7,14 +7,14 @@
   <body class="bg-slate-800 min-h-screen flex flex-col">
     <header class="flex flex-row-reverse py-3  bg-slate-900 rounded-b-lg">
       <a href="/api/logout" class="mx-4">
-        <button class="bg-sky-700 transition-colors duration-300 easy-in rounded-full px-3 py-1 hover:bg-sky-800 text-zinc-200">
+        <button class="bg-sky-700 transition-colors easy-in rounded-full px-3 py-1 hover:bg-sky-800 text-zinc-200">
           Выйти
         </button>
       </a>
     </header>
     <main class="text-white">
-      <h1>Привет</h1>
-      <p>Авторизован</p>
+      <h1>Привет, <%= name %>!</h1>
+      <p>Ты авторизован. С этого момента начинается приложение</p>
     </main>
   </body>
 </html>
