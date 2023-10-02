@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Сервер</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body class="bg-slate-800 min-h-screen flex flex-col">
+    <header class="flex flex-row-reverse py-3  bg-slate-900 rounded-b-lg">
+      <a href="/register" class="mx-4">
+        <button class="bg-sky-700 transition-colors duration-300 easy-in rounded-full px-3 py-1 hover:bg-sky-800 text-zinc-200">
+          Регистрация
+        </button>
+    </a>
+      <a href="/login" class="mx-4">
+        <button class="bg-sky-700 transition-colors duration-300 easy-in rounded-full px-3 py-1 hover:bg-sky-800 text-zinc-200">
+          Войти
+        </button>
+      </a>
+    </header>
+    <main class="min-h-full grow flex flex-col justify-center items-center">
+      <form action="/api/login" method="post" class="px-20 py-8 bg-slate-900 rounded flex flex-col shadow-md">
+        <h1 class="text-zinc-200 text-2xl mb-5 self-center">Авторизация</h1>
+        <div class="w-min">
+          <div class="my-4">
+            <input class="rounded-lg pl-3 text-xl py-0.5" type="email" name="email" id="email" placeholder="Введите почту" required />
+          </div>
+          <div class="my-4">
+            <input class="rounded-lg pl-3 text-xl py-0.5" type="password" name="password" id="password" placeholder="Введите пароль" required />
+          </div>
+        </div>
+        <div class="flex self-center">
+          <input class="bg-sky-700 transition-colors duration-300 easy-in rounded-lg px-16 mb-5 py-1 text-xl mt-5 hover:bg-sky-800 text-zinc-200" type="submit" value="Войти" />
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

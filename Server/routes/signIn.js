@@ -3,8 +3,8 @@ const { verifyUserToken } = require("../middleware/auth");
 var router = express.Router();
 
 router.get("/", verifyUserToken, function (req, res, next) {
-  console.log(req.user);
-  res.render(req.user ? "index" : "landing", { title: "Express" });
+  if(req.user) res.redirect('/');
+  else res.render("login", { title: "Express" });
 });
 
 module.exports = router;
