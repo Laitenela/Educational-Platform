@@ -63,7 +63,8 @@ exports.login = async (req, res) => {
         let payload = { id: user._id, user_type_id: user.user_type_id, user_name: user.name };
         const token = jwt.sign(payload, config.TOKEN_SECRET);
 
-        res.status(200).cookie("auth-token", token).redirect("/");
+        res.set('Authorization', 'Bearer ' + token);
+        res.redirect("/");
       } else {
         res.status(401).send("Invalid Email");
       }

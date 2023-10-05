@@ -1,0 +1,9 @@
+.profile{
+  margin: 3rem;
+}
+
+.user-data__avatar{
+  margin: auto 1.125rem auto 1.125rem;
+  background-position: center center;
+  height: 300px;
+}

@@ -7,7 +7,7 @@ router.post('/useravatar', multer.single('avatar'), userController.updateSetting
   res.end('Ok!');
 });
 
-router.post('/usersettings', userController.updateSettings, (req, res, next) => {
+router.post('/usersettings', multer.none(), userController.updateSettings, (req, res, next) => {
   res.end('Ok!');
 });
 
