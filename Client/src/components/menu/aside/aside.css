@@ -1,0 +1,31 @@
+.side-menu {
+  position:fixed;
+  display: flex;
+  flex-direction: column;
+  top:0;
+  left: -180px;
+  background-color: #17212B;
+  height: 100vh;
+  width: 190px;
+  transition: ease-in-out 200ms;
+  transition-delay: 50ms;
+  border-right: solid 0.1px black;
+}
+
+.side-menu:hover{
+  left: 0px;
+}
+
+.side-menu__button {
+  color: #EDEDED;
+  border-bottom: solid 0.5px black;
+  font-size: 20px;
+  margin: 9px;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.side-menu>a:nth-child(6){
+  display: block;
+  margin-top: auto;
+}

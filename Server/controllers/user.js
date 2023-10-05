@@ -23,12 +23,14 @@ exports.register = async (req, res) => {
 
   const salt = await bcrypt.genSalt(10);
   const hasPassword = await bcrypt.hash(req.body.password, salt);
-
+  const userUid = await User.count({});
   let user = new User({
     email: req.body.email,
+    user_id: userUid + 1,
     name: req.body.name,
     password: hasPassword,
     user_type_id: 0,
+    settings: { avatar: null }
   });
 
   user
@@ -74,68 +76,32 @@ exports.logout = async (req, res) => {
   res.redirect("/");
 };
 
-exports.userEvent = (req, res) => {
-  let events = [
-    {
-      _id: "1",
-      name: "Auto Expo",
-      description: "lorem ipsum",
-      date: "2012-04-23T18:25:43.511Z",
-    },
-    {
-      _id: "2",
-      name: "Auto Expo",
-      description: "lorem ipsum",
-      date: "2012-04-23T18:25:43.511Z",
-    },
-    {
-      _id: "3",
-      name: "Auto Expo",
-      description: "lorem ipsum",
-      date: "2012-04-23T18:25:43.511Z",
-    },
-  ];
-  res.json(events);
-};
+exports.updateSettings = async (req, res, next) => {
+  req.user.settings = req.body;
+  if(req.file?.fieldname) req.user.settings.avatar = req.file.filename;
 
-exports.adminEvent = (req, res) => {
-  let specialEvents = [
-    {
-      _id: "1",
-      name: "Auto Expo Special",
-      description: "lorem ipsum",
-      date: "2012-04-23T18:25:43.511Z",
-    },
-    {
-      _id: "2",
-      name: "Auto Expo Special",
-      description: "lorem ipsum",
-      date: "2012-04-23T18:25:43.511Z",
-    },
-    {
-      _id: "3",
-      name: "Auto Expo Special",
-      description: "lorem ipsum",
-      date: "2012-04-23T18:25:43.511Z",
-    },
-    {
-      _id: "4",
-      name: "Auto Expo Special",
-      description: "lorem ipsum",
-      date: "2012-04-23T18:25:43.511Z",
-    },
-    {
-      _id: "5",
-      name: "Auto Expo Special",
-      description: "lorem ipsum",
-      date: "2012-04-23T18:25:43.511Z",
-    },
-    {
-      _id: "6",
-      name: "Auto Expo Special",
-      description: "lorem ipsum",
-      date: "2012-04-23T18:25:43.511Z",
-    },
-  ];
-  res.json(specialEvents);
-};
+  const user = await User.findOne({_id: req.user.id});
+  for(let key of Object.keys(user.settings)){
+    if(key in req.user.settings) continue;
+    req.user.settings[key] = user.settings[key];
+  }
+
+  const result = await User.findOneAndUpdate({_id: req.user.id}, req.user);
+
+  next();
+}
+
+exports.userInfo = async (req, res) => {
+  User.findOne({_id: req.user.id}).then(async (user) => {
+    if(user){
+      const userInfo = {
+        name: user.name,
+        user_id: user.user_id,
+        settings: user.settings
+      }
+      res.json(userInfo);
+    } else {
+      res.end('Error!');
+    }
+  })
+}

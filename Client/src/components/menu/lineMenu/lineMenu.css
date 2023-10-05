@@ -1,0 +1,27 @@
+.line-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  vertical-align: middle;
+  background-color: #242F3D;
+}
+
+.line-menu>div{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.line-menu>div>a{
+  display: block;
+  text-align: center;
+  margin: auto 0 auto 0;
+  width: 8.1875rem;
+  font-size: 20px;
+  font-weight: lighter;
+  transition: ease-out 200ms;
+}
+
+.line-menu>div>a:hover{
+  color: gainsboro;
+}
