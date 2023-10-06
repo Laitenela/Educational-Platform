@@ -42,6 +42,13 @@ exports.courseInfo = async (req, res) => {
   res.json(course);
 }
 
+exports.edit = async (req, res) => {
+  const editedCourse = req.body;
+  req.file?.filename && (editedCourse.picture = req.file.filename);
+  const course = await Course.findOneAndUpdate({uid: req.body.id}, editedCourse);
+  res.end('Ok!');
+}
+
 exports.getSorted = async (req, res) => {
   const courses = await Course.find({}).sort([['title', -1]]).limit(10);
   res.json(courses);

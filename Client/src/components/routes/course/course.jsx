@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./course.css";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 function Course(props) {
   const params = useParams();
@@ -31,6 +31,7 @@ function Course(props) {
           <p>{courseInfo?.price}</p>
         </>
       )}
+      <Link to='edit'>Редактировать</Link>
     </div>
   );
 }
