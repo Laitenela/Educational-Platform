@@ -1,0 +1,22 @@
+.course-info{
+  margin: 3em;
+}
+
+.course-info__image{
+  height: 300px;
+}
+
+p{
+  white-space: pre-wrap;
+}
+
+.lesson{
+  width: fit-content;
+  padding: 3em;
+  background-color:darkslategray;
+}
+
+.lessons{
+  display: flex;
+  gap: 1em;
+}

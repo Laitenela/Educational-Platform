@@ -1,21 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import './profile.css';
 
 function Profile() {
-  const [userOptions, setUserOptions] = useState(undefined);
+  const userOptions = useLoaderData();
 
-  useEffect(() => {
-    (async() => {
-      const response = await fetch('http://127.0.0.1:3000/api/user/info', {method: 'GET'});
-      const data = await response.json();
-      setUserOptions(data.settings);
-      console.log(data.settings);
-    })();
-  }, [])
   return (
     <div className="profile">
-      {userOptions && (<div className="user-data">
+      <div className="user-data">
         <img className="user-data__avatar" src={`http://127.0.0.1:3000/uploads/${userOptions.avatar}`} alt="" />
         <h2 className="user-data__name">{userOptions.name}</h2>
         <div className="user-data__description">
@@ -27,7 +19,7 @@ function Profile() {
           <p>{userOptions.favoriteVegetable}</p>
         </div>
         <Link to={`edit`}>Редактировать</Link>
-      </div>)}
+      </div>
     </div>
   );
 }

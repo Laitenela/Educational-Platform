@@ -1,9 +1,17 @@
 import { useEffect, useState } from "react";
 import "./courseEditor.css";
-import { useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 
 function CourseEditor() {
   const params = useParams();
+  const courseData = useLoaderData();
+
+  useEffect(() => {
+    document.getElementById('title').value = courseData.title;
+    document.getElementById('description').value = courseData.description;
+    document.getElementById('course_info').value = courseData.course_info;
+    document.getElementById('price').value = courseData.price;
+  }, []);
 
   async function courseEdit(event) {
     event.preventDefault();
@@ -15,19 +23,6 @@ function CourseEditor() {
     });
     window.location = `/courses/${params.courseId}`;
   }
-
-  useEffect(() => {
-    (async () => {
-      const response = await fetch(
-        "http://127.0.0.1:3000/api/course/info?id=" + params.courseId
-      );
-      const data = await response.json();
-      document.getElementById('title').value = data.title;
-      document.getElementById('description').value = data.description;
-      document.getElementById('course_info').value = data.course_info;
-      document.getElementById('price').value = data.price;
-    })();
-  }, []);
 
   return (
     <div>

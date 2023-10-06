@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import './profileEditor.css';
+import { useLoaderData } from 'react-router-dom';
 
 async function updateData(event) {
   console.log(event.target.action);
@@ -13,14 +14,11 @@ async function updateData(event) {
 }
 
 function ProfileEditor(){
+  const userData = useLoaderData();
   useEffect(() => {
-    (async() => {
-      const response = await fetch('http://127.0.0.1:3000/api/user/info', {method: 'GET'});
-      const data = await response.json();
-      document.getElementById('name').value = data.settings.name;
-      document.getElementById('description').value = data.settings.description;
-      document.getElementById('favoriteVegetable').value = data.settings.favoriteVegetable;
-    })();
+    document.getElementById('name').value = userData.settings.name;
+    document.getElementById('description').value = userData.settings.description;
+    document.getElementById('favoriteVegetable').value = userData.settings.favoriteVegetable;
   }, [])
 
   return(

@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Outlet } from "react-router-dom";
+import { Outlet, useLoaderData } from "react-router-dom";
 import './App.css';
 import Aside from './components/menu/aside/aside';
+import LineMenu from './components/menu/lineMenu/lineMenu';
 
 //title, url
 const asideMenu = [
@@ -11,7 +12,7 @@ const asideMenu = [
   },
   {
     title: 'Профиль',
-    url: 'my'
+    url: 'users/me'
   },
   {
     title: 'Сообщения',
@@ -31,25 +32,35 @@ const asideMenu = [
   },
 ]
 
-function App({children}) {
-  const [userName, setUserName] = useState('Имя');
-  const [userAvatar, setUserAvatar] = useState('public/avatar_test.png');
-  useEffect(() => {
-    fetch('http://127.0.0.1:3000/api/user/info', {method: 'GET'})
-    .then(res => res.json())
-    .then(data => {
-      setUserName(data?.name);
-      setUserAvatar('http://127.0.0.1:3000/uploads/' + data?.settings?.avatar);
-    });
-  }, []);
-    
+const links = [
+  [
+    { url: "/?sort=fresh", text: "Свежие" },
+    { url: "/?sort=popular", text: "Популярные" },
+    { url: "/?sort=hot", text: "Горячие" },
+  ],
+  [
+    { url: "/trainers", text: "Тренеры" },
+    { url: "/mentors", text: "Менторы" },
+    { url: "/mentors", text: "Рейтинг" },
+  ],
+  [
+    { url: "/my", text: "Моё" },
+    { url: "/current", text: "Назначено" },
+    { url: "/myarchive", text: "Архив" },
+  ],
+];
+
+function App() {
+  const user = useLoaderData();
+
   return (
     <>
       <header>
         <div className='menu-card'>
-          <div className='menu-card__user-avatar' style={{backgroundImage: `url(${userAvatar})`}}></div>
-          <div className='menu-card__user-name'>▾{userName}</div>
+          <div className='menu-card__user-avatar' style={{backgroundImage: `url(http://127.0.0.1:3000/uploads/${user.settings.avatar})`}}></div>
+          <div className='menu-card__user-name'>▾{user.name}</div>
         </div>
+        <LineMenu links={links} parentClassName="main-page" />
       </header>
       <Aside items={asideMenu}/>
       <main>

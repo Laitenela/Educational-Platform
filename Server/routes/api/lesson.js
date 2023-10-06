@@ -6,4 +6,8 @@ router.post('/create', multer.single('picture'), lessonController.create, (req, 
   res.end("Ok!");
 });
 
+router.get('/info', lessonController.info);
+
+router.get('/collection', lessonController.collection);
+
 module.exports = router;

@@ -37,7 +37,7 @@ exports.create = async (req, res) => {
   })
 };
 
-exports.courseInfo = async (req, res) => {
+exports.info = async (req, res) => {
   const course = await Course.findOne({uid: req.query.id});
   res.json(course);
 }

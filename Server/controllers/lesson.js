@@ -26,3 +26,20 @@ exports.create = async (req, res, next) => {
   await lesson.save();
   next();
 };
+
+exports.edit = async (req, res, next) => {
+  const editedLesson = req.body;
+  req.file?.filename && (editedCourse.picture = req.file.filename);
+  await Lesson.findOneAndUpdate({uid: req.body.id}, editedLesson);
+  res.end('Ok!');
+}
+
+exports.info = async (req, res) => {
+  const lesson = await Lesson.findOne({uid: req.query.id});
+  res.json(lesson);
+}
+
+exports.collection = async (req, res) => {
+  const lessons = await Lesson.find({course_id: req.query.course_id});
+  res.json(lessons);
+}

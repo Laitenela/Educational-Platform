@@ -6,7 +6,7 @@ router.post('/create', multer.single('picture'), courseController.create);
 
 router.post('/edit', multer.single('picture'), courseController.edit);
 
-router.get('/info', courseController.courseInfo);
+router.get('/info', courseController.info);
 
 router.get('/stack', courseController.getSorted);
 
