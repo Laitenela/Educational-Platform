@@ -7,7 +7,7 @@ function Profile() {
 
   useEffect(() => {
     (async() => {
-      const response = await fetch('http://127.0.0.1:3000/api/userInfo', {method: 'POST'});
+      const response = await fetch('http://127.0.0.1:3000/api/user/info', {method: 'GET'});
       const data = await response.json();
       setUserOptions(data.settings);
       console.log(data.settings);

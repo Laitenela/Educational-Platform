@@ -6,10 +6,10 @@ function GridMenu({ cards, title }) {
   return (
     <div className={`grid-menu`}>
       <h1 className="grid-menu__title">{title}</h1>
-      {cards.map(({title, courseInfo, url, description, picture, price}) => {
+      {cards && cards.map(({title, course_info, uid, description, picture, price}) => {
         return (
-          <Link to={url}>
-            <InfoCard title={title} courseInfo={courseInfo} description={description} picture={picture} price={price}/>
+          <Link to={`courses/${uid}`}>
+            <InfoCard title={title} courseInfo={course_info} description={description} picture={picture} price={price}/>
           </Link>
         );
       })}

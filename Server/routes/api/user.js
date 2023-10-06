@@ -3,11 +3,14 @@ const courseController = require('../../controllers/course');
 const userController = require('../../controllers/user');
 const multer = require('../../middleware/multer');
 
-router.post('/useravatar', multer.single('avatar'), userController.updateSettings, (req, res, next) => {
+router.get('/info', userController.userInfo);
+
+router.post('/avatar', multer.single('avatar'), userController.updateSettings, (req, res, next) => {
   res.end('Ok!');
 });
 
-router.post('/usersettings', multer.none(), userController.updateSettings, (req, res, next) => {
+
+router.post('/settings', multer.none(), userController.updateSettings, (req, res, next) => {
   res.end('Ok!');
 });
 

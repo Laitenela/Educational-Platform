@@ -1,6 +1,7 @@
 import LineMenu from "../../menu/lineMenu/lineMenu";
 import GridMenu from "../../menu/gridMenu/gridMenu";
 import "./main.css";
+import { useEffect, useState } from "react";
 
 const links = [
   [
@@ -64,6 +65,15 @@ const cards = [
 ];
 
 function Main() {
+  const [cards, setCards] = useState(undefined);
+  useEffect(() => {
+    (async() => {
+      const response = await fetch('http://127.0.0.1:3000/api/course/stack');
+      const data = await response.json();
+      setCards(data);
+    })()
+  }, [])
+
   return (
     <div className="main-page">
       <LineMenu links={links} parentClassName="main-page" />

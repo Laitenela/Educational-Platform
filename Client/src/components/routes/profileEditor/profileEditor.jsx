@@ -15,7 +15,7 @@ async function updateData(event) {
 function ProfileEditor(){
   useEffect(() => {
     (async() => {
-      const response = await fetch('http://127.0.0.1:3000/api/userInfo', {method: 'POST'});
+      const response = await fetch('http://127.0.0.1:3000/api/user/info', {method: 'GET'});
       const data = await response.json();
       document.getElementById('name').value = data.settings.name;
       document.getElementById('description').value = data.settings.description;
@@ -25,11 +25,11 @@ function ProfileEditor(){
 
   return(
     <div>
-      <form id="avatar-form" action={import.meta.env.DEV ? "http://127.0.0.1:3000/api/update/useravatar" : "api/update/useravatar"} method="post" onSubmit={updateData}>
+      <form id="avatar-form" action={import.meta.env.DEV ? "http://127.0.0.1:3000/api/user/avatar" : "api/user/avatar"} method="post" onSubmit={updateData}>
         <input type="file" name="avatar" id="avatar" />
         <input type="submit" value="Загрузить!" />
       </form>
-      <form id="options-form" action={import.meta.env.DEV ? "http://127.0.0.1:3000/api/update/useravatar" : "api/update/usersettings"} method="post" onSubmit={updateData}>
+      <form id="options-form" action={import.meta.env.DEV ? "http://127.0.0.1:3000/api/user/settings" : "api/update/user/settings"} method="post" onSubmit={updateData}>
         <input type="text" name="name" id="name" />
         <textarea name="description" id="description" cols="30" rows="10"></textarea>
         <input type="text" name="favoriteVegetable" id="favoriteVegetable"/>

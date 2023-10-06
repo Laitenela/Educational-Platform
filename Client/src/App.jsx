@@ -35,7 +35,7 @@ function App({children}) {
   const [userName, setUserName] = useState('Имя');
   const [userAvatar, setUserAvatar] = useState('public/avatar_test.png');
   useEffect(() => {
-    fetch('http://127.0.0.1:3000/api/userInfo', {method: 'POST'})
+    fetch('http://127.0.0.1:3000/api/user/info', {method: 'GET'})
     .then(res => res.json())
     .then(data => {
       setUserName(data?.name);

@@ -10,6 +10,7 @@ const courseSchema = new Schema({
     description: String,
     course_info: String,
     price: Number,
+    uid: Number
 });
 
 module.exports = mongoose.model('course', courseSchema, 'courses');

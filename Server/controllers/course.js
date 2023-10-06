@@ -19,18 +19,30 @@ mongoose
 exports.create = async (req, res) => {
   User.findOne({_id: req.user.id}).then(async (user) => {
     if(!user) return;
+    const courseUid = await Course.count({}) + 1;
     const course = new Course({
       author: req.user.user_name,
       author_id: req.user.id,
       title: req.body.title,
-      picture: req.body.picture,
+      picture: req.file?.filename,
       description: req.body.description,
       course_info: req.body.course_info,
-      price: req.body.price
+      price: req.body.price,
+      uid: courseUid,
     });
 
     course.save().then(() => {
-      res.end('ok!');
+      res.json({status: 'Ok!', uid: course.uid});
     })
   })
 };
+
+exports.courseInfo = async (req, res) => {
+  const course = await Course.findOne({uid: req.query.id});
+  res.json(course);
+}
+
+exports.getSorted = async (req, res) => {
+  const courses = await Course.find({}).sort([['title', -1]]).limit(10);
+  res.json(courses);
+}
