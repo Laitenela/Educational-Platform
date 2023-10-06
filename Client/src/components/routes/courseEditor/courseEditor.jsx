@@ -33,26 +33,24 @@ function CourseEditor() {
     <div>
       <form className="course-creator" onSubmit={courseEdit}>
         <div>
-          <label htmlFor="title">Название</label>
-          <input type="text" name="title" id="title" />
+          <input placeholder="Название" type="text" name="title" id="title" />
         </div>
         <div>
           <label htmlFor="picture">Картинка</label>
           <input type="file" name="picture" id="picture" />
         </div>
         <div>
-          <label htmlFor="description">Описание</label>
-          <textarea type="text" name="description" id="description" />
+          <textarea placeholder="Описание" type="text" name="description" id="description" />
         </div>
         <div>
-          <label htmlFor="course_info">Дополнительная информация</label>
-          <input type="text" name="course_info" id="course_info" />
+          <textarea placeholder="Дополнительная информация" type="text" name="course_info" id="course_info" />
         </div>
         <div>
-          <label htmlFor="price">Цена</label>
-          <input type="number" name="price" id="price" />
+          <input placeholder="Цена" type="number" name="price" id="price" />
         </div>
-        <button type="submit">Сохранить</button>
+        <div>
+          <button type="submit">Сохранить</button>
+        </div>
       </form>
     </div>
   );

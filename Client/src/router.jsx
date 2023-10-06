@@ -6,6 +6,7 @@ import ProfileEditor from "./components/routes/profileEditor/profileEditor";
 import CourseCreator from "./components/routes/courseCreator/courseCreator";
 import Course from "./components/routes/course/course";
 import CourseEditor from "./components/routes/courseEditor/courseEditor";
+import LessonCreator from "./components/routes/lessonCreator/lessonCreator";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/courses/:courseId/edit",
         element: <CourseEditor />,
+      },
+      {
+        path: "/courses/:courseId/addLesson",
+        element: <LessonCreator />,
       },
       {
         path: "/courses/create",

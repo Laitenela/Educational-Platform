@@ -34,6 +34,7 @@
 }
 
 .info-card__course-info {
+  white-space: pre-wrap;
   padding-right: 1rem;
   margin-top: -2.5rem;
   font-size: 0.75rem;
@@ -42,6 +43,7 @@
 }
 
 .info-card__description {
+  white-space: pre-wrap;
   grid-column: 2/4;
   padding-right: 1rem;
   font-size: 0.75rem;

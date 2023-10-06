@@ -31,7 +31,10 @@ function Course(props) {
           <p>{courseInfo?.price}</p>
         </>
       )}
-      <Link to='edit'>Редактировать</Link>
+      <div>
+        <Link to='edit'>Редактировать</Link>
+      </div>
+      <Link to='addLesson'>Добавить урок</Link>
     </div>
   );
 }

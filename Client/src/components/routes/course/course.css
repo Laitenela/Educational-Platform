@@ -5,3 +5,7 @@
 .course-info__image{
   height: 300px;
 }
+
+p{
+  white-space: pre-wrap;
+}

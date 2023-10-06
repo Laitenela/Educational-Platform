@@ -8,6 +8,7 @@ const courseSchema = new Schema({
     title: String,
     picture: String,
     description: String,
+    lessons: Array,
     course_info: String,
     price: Number,
     uid: Number

@@ -24,16 +24,28 @@ function ProfileEditor(){
   }, [])
 
   return(
-    <div>
+    <div className='user-forms'>
       <form id="avatar-form" action={import.meta.env.DEV ? "http://127.0.0.1:3000/api/user/avatar" : "api/user/avatar"} method="post" onSubmit={updateData}>
-        <input type="file" name="avatar" id="avatar" />
-        <input type="submit" value="Загрузить!" />
+        <div>
+          <input type="file" name="avatar" id="avatar" />
+        </div>
+        <div>
+          <input type="submit" value="Загрузить!" />
+        </div>
       </form>
       <form id="options-form" action={import.meta.env.DEV ? "http://127.0.0.1:3000/api/user/settings" : "api/update/user/settings"} method="post" onSubmit={updateData}>
-        <input type="text" name="name" id="name" />
-        <textarea name="description" id="description" cols="30" rows="10"></textarea>
-        <input type="text" name="favoriteVegetable" id="favoriteVegetable"/>
-        <input type="submit" value="Сохранить!"/>
+        <div>
+          <input placeholder='Имя' type="text" name="name" id="name" />
+        </div>
+        <div>
+          <textarea placeholder="О себе" name="description" id="description" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+          <input type="text" placeholder='Любимый овощ' name="favoriteVegetable" id="favoriteVegetable"/>
+        </div>
+        <div>
+          <input type="submit" value="Сохранить!"/>
+        </div>
       </form>
     </div>
   );
