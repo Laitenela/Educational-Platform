@@ -1,4 +1,4 @@
-.info-card {
+/* .info-card {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   width: 32rem;
@@ -56,4 +56,4 @@
   align-self: center;
   grid-row: 4/5;
   grid-column: 3/4;
-}
+} */

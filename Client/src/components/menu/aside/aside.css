@@ -10,6 +10,7 @@
   transition: ease-in-out 200ms;
   transition-delay: 50ms;
   border-right: solid 0.1px black;
+  z-index: 10;
 }
 
 .side-menu:hover{

@@ -8,7 +8,7 @@ const userSchema = new Schema({
     user_id: Number,
     name:String,
     user_type_id:Number,
-    settings: Object
+    settings: Object,
 });
 
 module.exports = mongoose.model('user', userSchema, 'users');
