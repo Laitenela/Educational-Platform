@@ -1,3 +1,11 @@
+input, textarea {
+  all: unset;
+}
+
+img {
+  pointer-events: none;
+}
+
 .grid-container{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -52,6 +60,7 @@
   margin: 25px;
   margin-left: 34px;
   height: 250px;
+  width: 100%;
 }
 
 .block-user__title{
@@ -64,6 +73,8 @@
 }
 
 .block-user__text{
+  height: 100%;
+  width: 100%;
   margin-top: 30px;
   font-size: 20px;
 }
@@ -75,10 +86,13 @@
 
 .block-text__info-container{
   display: flex;
+  width: 100%;
+  height: 100%;
   flex-direction: column;
 }
 
 .block-text__title{
+  text-align: center;
   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   width: fit-content;
   margin: 0 auto 0 auto;
@@ -92,6 +106,8 @@
 }
 
 .block-text__text{
+  display: block;
+  height: 100%;
   white-space: pre-wrap;
   padding: 10px;
   box-shadow: inset 0px 1px 2px 1px rgba(0, 0, 0, 0.25);
@@ -111,6 +127,8 @@
 }
 
 .block-portfolio__title{
+  display: block;
+  text-align: center;
   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   width: fit-content;
   margin: 0 auto 0 auto;
@@ -156,6 +174,7 @@
 }
 
 .block-courses__title{
+  display: block;
   font-size: 32px;
   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   width: fit-content;
@@ -351,6 +370,7 @@
 
 .medium-course-block__text{
   grid-row: 3/6;
+  overflow: hidden;
   white-space: pre-wrap;
   margin: 15px 10px;
   padding: 15px 10px;
@@ -358,7 +378,7 @@
   border-radius: 5px;
   background-color: #0c131c;
   box-shadow: inset 0px 1px 1px 0.5px rgba(0, 0, 0, 0.25);
-  height: fit-content;
+  height: 150px;
 }
 
 .medium-course-block__image{
@@ -383,10 +403,14 @@
 }
 
 .block-text--big.block-text__text{
-  font-size: 24px;
+  display: block;
+  overflow: hidden;
+  height: 475px;
+  font-size: 16px;
 }
 
 .block-text--little.block-text__text{
+  display: block;
   font-size: 16px;
 }
 

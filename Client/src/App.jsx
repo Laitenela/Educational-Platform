@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Outlet, useLoaderData } from "react-router-dom";
 import './App.css';
-import Aside from './components/menu/aside/aside';
-import LineMenu from './components/menu/lineMenu/lineMenu';
+import Aside from './components/containers/aside/aside';
+import LineMenu from './components/containers/lineMenu/lineMenu';
+import { observer } from 'mobx-react-lite';
 
 //title, url
 const asideMenu = [
@@ -50,7 +51,7 @@ const links = [
   ],
 ];
 
-function App() {
+const App = observer(() => {
   const user = useLoaderData();
 
   return (
@@ -71,6 +72,6 @@ function App() {
       </footer>
     </>
   )
-}
+})
 
 export default App;

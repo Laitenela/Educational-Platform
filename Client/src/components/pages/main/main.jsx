@@ -1,11 +1,12 @@
-import LineMenu from "../../menu/lineMenu/lineMenu";
 import "./main.css";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect } from "react";
 import { useLoaderData } from "react-router-dom";
-import GridContainer from "../../menu/gridMenu/gridContainer";
+import GridContainer from "../../containers/gridMenu/gridContainer";
+import { BlocksStore } from "../../../modules/stores/blocksStore";
 
 const infoBlocks = [
   {
+    type: "default",
     name: "image-block",
     title: "Лучшие курсы по мнению редакторов",
     grid: {row: "1/2", column: "1/5"},
@@ -13,6 +14,7 @@ const infoBlocks = [
     url: "/",
   },
   {
+    type: "default",
     name: "little-block",
     url: "/courses/1",
     title: "Космос: от Земли во Вселенную",
@@ -21,6 +23,7 @@ const infoBlocks = [
     image: "QQ_Test.png",
   },
   {
+    type: "default",
     name: "little-block",
     url: "/courses/1",
     title: "Космос: от Земли во Вселенную",
@@ -29,6 +32,7 @@ const infoBlocks = [
     image: "TT_Test.png"
   },
   {
+    type: "default",
     name: "big-course-block",
     url: "/courses/1",
     title: "Космос: от Земли во Вселенную",
@@ -47,6 +51,7 @@ const infoBlocks = [
     image: "NN_test.jpeg"
   },
   {
+    type: "default",
     name: "medium-course-block",
     url: "/courses/1",
     title: "Космос: от Земли во Вселенную",
@@ -59,6 +64,7 @@ const infoBlocks = [
     image: "LL_test.jpg"
   },
   {
+    type: "default",
     name: "little-block",
     url: "/courses/1",
     title: "Космос: от Земли во Вселенную",
@@ -67,6 +73,7 @@ const infoBlocks = [
     image: "PP_test.jpg"
   },
   {
+    type: "default",
     name: "little-block",
     url: "/courses/1",
     title: "Космос: от Земли во Вселенную",
@@ -75,6 +82,7 @@ const infoBlocks = [
     image: "GG_test.jpg"
   },
   {
+    type: "default",
     name: "little-block",
     url: "/courses/1",
     title: "Космос: от Земли во Вселенную",
@@ -83,6 +91,7 @@ const infoBlocks = [
     image: "FF_test.jpeg"
   },
   {
+    type: "default",
     name: "little-block",
     url: "/courses/1",
     title: "Космос: от Земли во Вселенную",
@@ -91,6 +100,7 @@ const infoBlocks = [
     image: "QLJo0.jpg"
   },
   {
+    type: "default",
     name: "image-block",
     url: "/",
     title: "Открытия недели",
@@ -104,18 +114,11 @@ function Main() {
     window.scrollTo(0, 0)
   });
   const courses = useLoaderData();
+  const blocksStore = new BlocksStore(infoBlocks);
 
   return (
     <div className="main-page">
-      <GridContainer infoBlocks={infoBlocks}/>
-      {/* <div className="grid-container">
-        {blocks.map(block => {
-          <div className={`${block.name} block`} style={block.backgdoundImage && {backgroundImage: `url(http://127.0.0.1:3000/uploads/${block.backgdoundImage})`}}>
-            <div className={`${block.name}__title`}>{block.title}</div>
-          </div>
-        })}
-      </div> */}
-      {/* <GridMenu title={'Популярные курсы'} cards={courses} parentClassName="main-page" /> */}
+      <GridContainer blocksStore={blocksStore}/>
     </div>
   );
 }

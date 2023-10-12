@@ -1,4 +1,4 @@
-function Slider({ blockName, slides }) {
+function Slider({ blockName, items }) {
   let activeId = 0;
   let timer = undefined;
   const changeOnActiveSliderContainer = (event) => {
@@ -38,7 +38,7 @@ function Slider({ blockName, slides }) {
   return (
     <div className={`${blockName}__slider-container`}>
       <div className="image-slider">
-        {slides.map((slide, index) => {
+        {items.map((slide, index) => {
           return (
             <div
               className={`image-slider__slide${index === activeId ? " active" : ""}`}
@@ -57,7 +57,7 @@ function Slider({ blockName, slides }) {
         })}
       </div>
       <div className="info-slider">
-        {slides.map((slide, index) => {
+        {items.map((slide, index) => {
           return (
               <div key={index} id={`${index}info-slider__container`} className={`info-slider__container${index === activeId ? " active" : ""}`}>
                 <div className="info-slider__title">{slide.title}</div>

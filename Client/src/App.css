@@ -2,7 +2,7 @@
 
 :root{
   font-family: 'Roboto', sans-serif;
-  box-sizing: border-box;
+  box-sizing:content-box;
 }
 
 body {

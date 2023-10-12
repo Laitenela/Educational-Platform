@@ -1,0 +1,16 @@
+.factory-menu{
+  position:fixed;
+  top:0;
+  left: 150px;
+  height: 50px;
+  width: 1600px;
+  padding: 5px;
+  background-color: black;
+}
+
+.factory-menu__button{
+  height: 50px;
+  width: 50px;
+  background-color: wheat;
+  
+}

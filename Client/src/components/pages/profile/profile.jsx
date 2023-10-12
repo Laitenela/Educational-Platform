@@ -1,9 +1,11 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import './profile.css';
-import GridContainer from "../../menu/gridMenu/gridContainer";
+import GridContainer from "../../containers/gridMenu/gridContainer";
+import { observer } from "mobx-react-lite";
+import { BlocksStore } from "../../../modules/stores/blocksStore";
 
-function Profile() {
+const Profile = observer(() => {
   useLayoutEffect(() => {
     window.scrollTo(0, 0)
 });
@@ -12,6 +14,7 @@ function Profile() {
     background: "{url}",
     infoBlocks: [
       {
+        type: "default",
         name: "block-user",
         grid: {column: "1/3", row: "1/3"},
         image: userOptions.avatar,
@@ -22,6 +25,7 @@ function Profile() {
         text: "Мне 25. Я живу в Москве и работаю в сфере дизайна уже несколько лет. Моя страсть - это фотография, и я стараюсь находить время для путешествий, чтобы делать новые снимки. В свободное время я также увлекаюсь дизайном: мне нравится придумывать новые идеи и воплощать их в жизнь.",
       },
       {
+        type: "text",
         name: "block-text",
         grid: {column: "3/5", row: "1/4"},
         title: "Мои достижения",
@@ -41,11 +45,12 @@ function Profile() {
 Увлечения и хобби: чтение книг, путешествия, спорт (бег, йога)`,
       },
       {
+        type: "portfolio",
         name: "block-portfolio",
         grid: {column: "1/3", row: "3/7"},
         title: "Моё портфолио",
         caption: "Любимые работы",
-        portfolio: [
+        items: [
           { title: "Магазин видеоигр", image: "test_image_help.jpg" },
           { title: "Магазин видеоигр", image: "test_image_help.jpg" },
           { title: "Магазин видеоигр", image: "test_image_help.jpg" },
@@ -55,10 +60,11 @@ function Profile() {
         ], 
       },
       {
+        type: "coursesList",
         name: "block-courses",
         grid: {column: "3/5", row: "4/7"},
         title: "Мои курсы на сайте",
-        courses: [
+        items: [
           {
             title: "Космос: от Земли во Вселенную", 
             description: "Здесь вы узнаете о невероятных тайнах и загадках нашей Вселенной, а также о том, как человечество стремится их разгадать.",
@@ -78,12 +84,13 @@ function Profile() {
       }
     ],
   }
+  const blocksStore = new BlocksStore(profileData.infoBlocks);
   const markup = userOptions.markup;
 
   return (
     <div className="profile">
       <div className="profile__background" style={{backgroundImage: `url(http://127.0.0.1:3000/uploads/SS_test.jpg)`}}></div>
-      <GridContainer infoBlocks={profileData.infoBlocks} userOptions={userOptions}/>
+      <GridContainer blocksStore={blocksStore} userOptions={userOptions}/>
       {/* <div className="user-data">
         <img className="user-data__avatar" src={`http://127.0.0.1:3000/uploads/${userOptions.avatar}`} alt="" />
         <h2 className="user-data__name">{userOptions.name}</h2>
@@ -99,6 +106,6 @@ function Profile() {
       </div> */}
     </div>
   );
-}
+})
 
 export default Profile;
