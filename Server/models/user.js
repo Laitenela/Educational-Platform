@@ -9,6 +9,7 @@ const userSchema = new Schema({
     name:String,
     user_type_id:Number,
     settings: Object,
+    displayForm: Object,
 });
 
 module.exports = mongoose.model('user', userSchema, 'users');

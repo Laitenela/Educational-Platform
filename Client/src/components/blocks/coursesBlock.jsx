@@ -8,7 +8,8 @@ const CoursesBlock = observer(({block, editable, onChange}) => {
     <div className={`${block.name}__info-container`}>
       <Title parentName={block.name} editable={editable}>{block.title}</Title>
       <Caption parentName={block.name} editable={editable}>{block.caption}</Caption>
-      <ItemsList parentName={block.name} items={block.items} editable={editable} />
+      <ItemsList parentName={block.name} block={block} editable={editable} />
+      {editable && <button onClick={() => block.createItem()} className={`${block.name}__button-add`}>Добавить</button>}
     </div>
   )
 })

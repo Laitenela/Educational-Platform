@@ -85,6 +85,17 @@ exports.updateSettings = async (req, res, next) => {
   next();
 }
 
+exports.updateDisplayForm = async (req, res, next) => {
+  const displayForm = req.body;
+  await User.findOneAndUpdate({_id: req.user.id}, {displayForm});
+  next();
+}
+
+exports.getDisplayForm = async (req, res) => {
+  const user = await User.findOne({user_id: req.query.user_id});
+  res.json(user.displayForm);
+}
+
 exports.userInfo = async (req, res) => {
   User.findOne({_id: req.user.id}).then(async (user) => {
     if(user){

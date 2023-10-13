@@ -1,4 +1,5 @@
 .factory-menu{
+  display: flex;
   position:fixed;
   top:0;
   left: 150px;
@@ -9,6 +10,7 @@
 }
 
 .factory-menu__button{
+  margin: 0 10px;
   height: 50px;
   width: 50px;
   background-color: wheat;

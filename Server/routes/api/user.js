@@ -9,6 +9,12 @@ router.post('/avatar', multer.single('avatar'), userController.updateSettings, (
   res.end('Ok!');
 });
 
+router.post('/displayForm', userController.updateDisplayForm, (req, res) => {
+  res.json({status: 'Ok!'});
+});
+
+router.get('/displayForm', userController.getDisplayForm);
+
 
 router.post('/settings', multer.none(), userController.updateSettings, (req, res, next) => {
   res.end('Ok!');
