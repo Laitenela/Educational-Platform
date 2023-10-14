@@ -1,12 +1,12 @@
 import "./course.css";
-import { useParams, useLoaderData, Link } from "react-router-dom";
-import GridContainer from "../../containers/gridContainer/gridContainer";
+import { useLoaderData } from "react-router-dom";
 import { BlocksStore } from "../../../modules/stores/blocksStore";
+import GridContainer from "../../containers/gridContainer/gridContainer";
 
-function Course(props) {
-  const params = useParams();
+function Course() {
   const loadedData = useLoaderData();
   const blocksStore = new BlocksStore(loadedData.infoBlocks);
+
   return (
     <div className="course-info">
       <div className="course-info__header">
@@ -19,27 +19,3 @@ function Course(props) {
 }
 
 export default Course;
-
-
-{/* <h1>{courseInfo?.title}</h1>
-      <img
-        className="course-info__image"
-        src={`http://127.0.0.1:3000/uploads/${courseInfo?.picture}`}
-      />
-      <p>{courseInfo?.description}</p>
-      <p>{courseInfo?.course_info}</p>
-      <p>{courseInfo?.price}</p>
-      <div>
-        <Link to="edit">Редактировать</Link>
-      </div>
-      <div className="lessons">
-        {courseInfo.lessons.map((lesson) => {
-          return (
-            <div className="lesson">
-              <h3>{lesson.title}</h3>
-              <p>{lesson.description}</p>
-            </div>
-          );
-        })}
-      </div>
-      <Link to="lessons/add">Добавить урок</Link> */}

@@ -19,6 +19,7 @@
 .profile__edit-button{
   position: absolute;
   background-color: black;
+  color: white;
   border-radius: 5px;
   border: solid 0.5px gray;
   opacity: 0;

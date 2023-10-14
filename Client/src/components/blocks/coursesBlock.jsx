@@ -3,7 +3,7 @@ import Caption from "../elements/caption/caption";
 import Title from "../elements/title/title";
 import ItemsList from "../elements/itemsList/itemsList";
 
-const CoursesBlock = observer(({block, editable, onChange}) => {
+const CoursesBlock = observer(({block, editable}) => {
   return(
     <div className={`${block.name}__info-container`}>
       <Title parentName={block.name} editable={editable}>{block.title}</Title>
