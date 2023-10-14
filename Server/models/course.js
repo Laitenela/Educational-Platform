@@ -11,7 +11,8 @@ const courseSchema = new Schema({
     lessons: Array,
     course_info: String,
     price: Number,
-    uid: Number
+    uid: Number,
+    displayForm: Object,
 });
 
 module.exports = mongoose.model('course', courseSchema, 'courses');

@@ -87,10 +87,13 @@ export class Block {
 
 export class Item{
   title
+  caption
   description
+  text
   image
   constructor(itemData){
     makeAutoObservable(this);
+    console.log(itemData);
     Object.assign(this, itemData);
   }
 
@@ -104,6 +107,10 @@ export class Item{
 
   changeDescription(description){
     this.description = description;
+  }
+
+  changeText(text){
+    this.text = text;
   }
 
   changeImage(filename){

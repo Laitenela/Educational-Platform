@@ -20,7 +20,6 @@ router.use('/user', verifyUserToken, userRoute);
 
 router.put('/upload', multer.single('image'), (req, res) => {
   const status = 'ok!';
-  console.log(req.file);
   const filename = req.file.filename;
   res.json({status, filename});
 })

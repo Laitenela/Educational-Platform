@@ -1,13 +1,23 @@
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { sliderController, changeSlide, preventChangeSlide } from "./sliderHelper";
+import { observer } from "mobx-react-lite";
 
-function Slider({ blockName, items }) {
-  useLayoutEffect(() => {
+const Slider = observer(({ blockName, items, editable }) => {
+
+  useEffect(() => {
     sliderController.activeIndex = 0;
-  })
+  }, []);
   const imageSlidesProps = items.map((item, index) => {
     const isActive = index === sliderController.activeIndex;
     const backgroundImage = `url(http://127.0.0.1:3000/uploads/${item.image})`;
+
+    const uploadImage = async (event) => {
+      const formData = new FormData();
+      formData.append('image', event.target.files[0]);
+      const response = await fetch('http://127.0.0.1:3000/api/upload', {method: 'PUT', body: formData});
+      const data = await response.json();
+      item.changeImage(data.filename);
+    }
 
     const childrenProps = {};
     childrenProps.className = "image-slider__image";
@@ -15,7 +25,12 @@ function Slider({ blockName, items }) {
     childrenProps.onMouseEnter = changeSlide;
     childrenProps.onMouseLeave = preventChangeSlide;
     childrenProps.style = { backgroundImage };
-    const children = <div {...childrenProps} />;
+    const children = <>
+      <div {...childrenProps} />
+      {editable && <label className={`${blockName}__image-loader-button`} htmlFor={`${blockName}__file-input_${index}`}>+</label>}
+      {editable && <input onChange={uploadImage} type="file" id={`${blockName}__file-input_${index}`} className={`${blockName}__image-loader-input`} />}
+    </>
+    
 
     const imageSlideProps = {children};
     imageSlideProps.className = "image-slider__slide";
@@ -48,13 +63,15 @@ function Slider({ blockName, items }) {
       <div className="info-slider">
         {items.map((slide, index) => (
           <div {...infoSlidesProps[index]}>
-            <div className="info-slider__title">{slide.title}</div>
-            <div className="info-slider__text">{slide.text}</div>
+            {editable && <input type="text" className="info-slider__title" onChange={(event) => slide.changeTitle(event.target.value)} value={slide.title}/>}
+            {editable && <textarea className="info-slider__text" onChange={(event) => slide.changeText(event.target.value)} value={slide.text}/>}
+            {!editable && <div className="info-slider__title">{slide.title}</div>}
+            {!editable && <div className="info-slider__text">{slide.text}</div>}
           </div>
         ))}
       </div>
     </div>
   );
-}
+})
 
 export default Slider;

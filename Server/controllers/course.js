@@ -53,3 +53,15 @@ exports.getSorted = async (req, res) => {
   const courses = await Course.find({}).sort([['title', -1]]).limit(10);
   res.json(courses);
 }
+
+exports.updateDisplayForm = async (req, res, next) => {
+  const displayForm = req.body;
+  console.log(displayForm);
+  await Course.findOneAndUpdate({uid: req.query.uid}, {displayForm});
+  next();
+}
+
+exports.getDisplayForm = async (req, res) => {
+  const course = await Course.findOne({uid: req.query.uid});
+  res.json(course.displayForm);
+};

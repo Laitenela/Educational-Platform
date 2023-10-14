@@ -118,6 +118,7 @@
 
 .little-block__image-container{
   height: 170px;
+  width: 147.25px;
   grid-column: 1/2;
 }
 
@@ -141,10 +142,15 @@
 }
 
 .little-block__title{
+  display: block;
+  width: 100%;
   font-size: 20px;
 }
 
 .little-block__text{
+  display: block;
+  width: 100%;
+  height: 100%;
   font-size: 15px;
   margin-top: 15px;
 }
@@ -198,11 +204,15 @@
 }
 
 .medium-course-block{
+  position: relative;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
 
 .medium-course-block__title{
+  display: block;
+  width: 100%;
+  text-align: center;
   margin: auto;
   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   font-size: 32px;
@@ -222,6 +232,26 @@
   object-fit: cover;
   height: 140px;
   width: 100%;
+}
+
+.medium-course-block__image-loader-button{
+  position:absolute;
+  right: 10px;
+  top: 10px;
+  background-color: black;
+  color: white;
+  transition: opacity ease-out 150ms;
+  opacity: 0;
+}
+
+.medium-course-block:hover{
+  .medium-course-block__image-loader-button{
+    opacity: 1;
+  }
+}
+
+.medium-course-block__image-loader-input{
+  display: none;
 }
 
 .medium-course-block__text{

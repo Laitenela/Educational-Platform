@@ -26,7 +26,8 @@ const GridContainer = observer(({ blocksStore, editable }) => {
   };
 
   const changePosition = (event, data, eventRect) => {
-    const blockId = data.id;
+    console.log(data);
+    const blockId = data.elementId;
     const editedBlock = infoBlocks.find((block) => block.id === blockId);
 
     const newRow = Math.round((event.pageY - event.currentTarget.offsetTop - data.mouseY) / 185 + 1);

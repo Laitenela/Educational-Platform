@@ -10,4 +10,10 @@ router.get('/info', courseController.info);
 
 router.get('/stack', courseController.getSorted);
 
+router.post('/displayForm', courseController.updateDisplayForm, (req, res) => {
+  res.json({status: 'Ok!'});
+});
+
+router.get('/displayForm', courseController.getDisplayForm);
+
 module.exports = router;
