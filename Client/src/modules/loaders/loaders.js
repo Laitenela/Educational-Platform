@@ -1,6 +1,6 @@
 import { BlocksStore } from "../stores/blocksStore";
+import { rootUrl } from "../../settings/settings";
 
-const rootUrl = "http://127.0.0.1:3000/";
 const routeLoader = {};
 
 routeLoader.app = async ({ params }) => {
@@ -172,5 +172,15 @@ routeLoader.courseEditor = async ({ params }) => {
     
   return courseData;
 };
+
+routeLoader.userCourses = async ({params}) => {
+  const response = await fetch(
+    `${rootUrl}api/course/authorList`
+  );
+
+  const loadedData = await response.json();
+  console.log(loadedData);
+  return loadedData;
+}
 
 export default routeLoader;

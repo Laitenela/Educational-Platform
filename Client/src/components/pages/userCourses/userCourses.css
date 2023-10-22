@@ -1,0 +1,19 @@
+.courses-list{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  border: solid 0.5px black;
+  background-color: #17212B;
+  border-radius: 29.5px 29.5px 10px 10px;
+  margin: 18px;
+  margin-left: 25px;
+  margin-top: 10px;
+}
+
+.courses-list__flex-container{
+  display: flex;
+  grid-column: 1/2;
+  margin: 30px 20px;
+  flex-direction: column;
+  row-gap: 30px;
+}

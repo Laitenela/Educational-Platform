@@ -65,3 +65,14 @@ exports.getDisplayForm = async (req, res) => {
   const course = await Course.findOne({uid: req.query.uid});
   res.json(course.displayForm);
 };
+
+exports.getUserCourses = async (req, res) => {
+  const courses = await Course.find({author_id: req.user.id});
+  const responseDataList = courses.map(course => {return {
+    uid: course.uid, 
+    title: course.title, 
+    image: course.picture, 
+    description: course.description,
+  }});
+  res.json(responseDataList);
+}

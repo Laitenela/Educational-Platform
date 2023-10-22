@@ -16,6 +16,10 @@ const asideMenu = [
     url: 'users/me'
   },
   {
+    title: 'Мои курсы',
+    url: 'courses/my'
+  },
+  {
     title: 'Сообщения',
     url: 'messages'
   },

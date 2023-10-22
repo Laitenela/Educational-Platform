@@ -1,8 +1,5 @@
 import { observer } from "mobx-react-lite";
-import Title from "../elements/title/title";
-import Caption from "../elements/caption/caption";
 import Slider from "../elements/slider/slider";
-import Text from "../elements/text/text";
 
 const SliderBlock = observer(({block, editable}) => {
 

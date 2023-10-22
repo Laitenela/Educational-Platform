@@ -257,14 +257,16 @@ img {
 }
 
 .course-container__image{
-  width: 250px;
+  display: block;
+  object-fit: cover;
   height: 106px;
+  width: 200px;
   border-radius: 10px;
 }
 
 .course-container__info-container{
   display: flex;
-  width: 100%;
+  width: 80%;
   flex-direction: column;
   margin: 0 10px;
 }
@@ -287,7 +289,7 @@ img {
 .course-container__description{
   display: block;
   font-size: 18px;
-  margin: auto 0;
+  margin-top: 10px;
 }
 
 .disabled{

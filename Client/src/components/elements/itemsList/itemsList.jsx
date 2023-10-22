@@ -11,7 +11,7 @@ const ItemsList = observer(({parentName, editable, block}) => {
 
   return (
     <div className={`${parentName}__flex-container`}>
-      {block.items.map((course, index) => (
+      {block?.items?.map((course, index) => (
         <div key={index} className="course-container">
           <img className="course-container__image" src={`http://127.0.0.1:3000/uploads/${course.image}`} alt="" />
           {editable && <label className={`course-container__image-loader-button`} htmlFor={`course-container__file-input${index}`}>Загрузить</label>}

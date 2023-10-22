@@ -16,4 +16,6 @@ router.post('/displayForm', courseController.updateDisplayForm, (req, res) => {
 
 router.get('/displayForm', courseController.getDisplayForm);
 
+router.get('/authorList', courseController.getUserCourses);
+
 module.exports = router;

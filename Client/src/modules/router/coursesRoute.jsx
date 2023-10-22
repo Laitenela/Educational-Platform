@@ -1,5 +1,6 @@
 import Course from "../../components/pages/course/course";
 import CourseCreator from "../../components/pages/courseCreator/courseCreator";
+import UserCourses from "../../components/pages/userCourses/userCourses";
 import routeLoader from "../loaders/loaders";
 import lessonsRoute from "./lessonsRoute";
 
@@ -7,6 +8,11 @@ const coursesRoute = [
   {
     path: "create",
     element: <CourseCreator />,
+  },
+  {
+    path: "my",
+    element: <UserCourses />,
+    loader: routeLoader.userCourses
   },
   {
     path: ":courseId",
