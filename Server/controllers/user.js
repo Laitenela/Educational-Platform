@@ -80,7 +80,7 @@ exports.updateSettings = async (req, res, next) => {
     req.user.settings[key] = user.settings[key];
   }
 
-  const result = await User.findOneAndUpdate({_id: req.user.id}, req.user);
+  await User.findOneAndUpdate({_id: req.user.id}, req.user);
 
   next();
 }
