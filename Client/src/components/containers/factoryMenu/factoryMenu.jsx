@@ -6,15 +6,15 @@ function FactoryMenu(){
       type: "text",
       name: "block-text",
       size: {row: 1, column: 1},
-      text: "Пиши че ухочешь"
+      text: "Пиши"
     },
     "factoryButton2": {
       type: "default",
       name: "block-user",
       size: {row: 2, column: 2},
-      title: "Пиши че хочешь",
-      caption: "Пиши че хочешь",
-      text: "Пиши че хочешь",
+      title: "Пиши",
+      caption: "Пиши",
+      text: "Пиши",
     },
     "factoryButton3": "courses",
     "factoryButton4": "portfolio",
@@ -38,19 +38,3 @@ function FactoryMenu(){
 }
 
 export default FactoryMenu;
-
-  // const types = {
-  //   "factoryButton1": "text",
-  //   "factoryButton2": "default",
-  //   "factoryButton3": "courses",
-  //   "factoryButton4": "portfolio",
-  //   "factoryButton5": "slider",
-  // }
-
-  // const names = {
-  //   "factoryButton1": "block-text",
-  //   "factoryButton2": "block-user",
-  //   "factoryButton3": "block-courses",
-  //   "factoryButton4": "block-portfolio",
-  //   "factoryButton5": "slider",
-  // }

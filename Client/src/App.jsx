@@ -4,6 +4,7 @@ import './App.css';
 import Aside from './components/containers/aside/aside';
 import LineMenu from './components/containers/lineMenu/lineMenu';
 import { observer } from 'mobx-react-lite';
+import { rootUrl } from './settings';
 
 //title, url
 const asideMenu = [
@@ -62,7 +63,7 @@ const App = observer(() => {
     <>
       <header>
         <div className='menu-card'>
-          <div className='menu-card__user-avatar' style={{backgroundImage: `url(http://127.0.0.1:3000/uploads/${user.settings.avatar})`}}></div>
+          <div className='menu-card__user-avatar' style={{backgroundImage: `url(${rootUrl}uploads/${user.settings.avatar})`}}></div>
           <div className='menu-card__user-name'>▾{user.name}</div>
         </div>
         <LineMenu links={links} parentClassName="main-page" />

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { rootUrl } from "../../../settings";
 import { sliderController, changeSlide, preventChangeSlide } from "./sliderHelper";
 import { observer } from "mobx-react-lite";
 
@@ -9,12 +10,12 @@ const Slider = observer(({ blockName, items, editable }) => {
   }, []);
   const imageSlidesProps = items.map((item, index) => {
     const isActive = index === sliderController.activeIndex;
-    const backgroundImage = `url(http://127.0.0.1:3000/uploads/${item.image})`;
+    const backgroundImage = `url(${rootUrl}uploads/${item.image})`;
 
     const uploadImage = async (event) => {
       const formData = new FormData();
       formData.append('image', event.target.files[0]);
-      const response = await fetch('http://127.0.0.1:3000/api/upload', {method: 'PUT', body: formData});
+      const response = await fetch(`${rootUrl}api/upload`, {method: 'PUT', body: formData});
       const data = await response.json();
       item.changeImage(data.filename);
     }
@@ -57,12 +58,12 @@ const Slider = observer(({ blockName, items, editable }) => {
     <div className={`${blockName}__slider-container`}>
       <div className="image-slider">
         {items.map((_slide, index) => (
-          <div {...imageSlidesProps[index]} />
+          <div key={index} {...imageSlidesProps[index]} />
         ))}
       </div>
       <div className="info-slider">
         {items.map((slide, index) => (
-          <div {...infoSlidesProps[index]}>
+          <div key={index} {...infoSlidesProps[index]}>
             {editable && <input type="text" className="info-slider__title" onChange={(event) => slide.changeTitle(event.target.value)} value={slide.title}/>}
             {editable && <textarea className="info-slider__text" onChange={(event) => slide.changeText(event.target.value)} value={slide.text}/>}
             {!editable && <div className="info-slider__title">{slide.title}</div>}

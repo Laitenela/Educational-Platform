@@ -1,5 +1,5 @@
 import { BlocksStore } from "../stores/blocksStore";
-import { rootUrl } from "../../settings/settings";
+import { rootUrl } from "../../settings";
 
 const routeLoader = {};
 

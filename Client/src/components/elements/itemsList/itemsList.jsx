@@ -1,10 +1,11 @@
 import { observer } from "mobx-react-lite";
+import { rootUrl } from "../../../settings";
 
 const ItemsList = observer(({parentName, editable, block}) => {
   const uploadImage = async (event, course) => {
     const formData = new FormData();
     formData.append('image', event.target.files[0]);
-    const response = await fetch('http://127.0.0.1:3000/api/upload', {method: 'PUT', body: formData});
+    const response = await fetch(`${rootUrl}/api/upload`, {method: 'PUT', body: formData});
     const data = await response.json();
     course.changeImage(data.filename);
   }
@@ -13,7 +14,7 @@ const ItemsList = observer(({parentName, editable, block}) => {
     <div className={`${parentName}__flex-container`}>
       {block?.items?.map((course, index) => (
         <div key={index} className="course-container">
-          <img className="course-container__image" src={`http://127.0.0.1:3000/uploads/${course.image}`} alt="" />
+          <img className="course-container__image" src={`${rootUrl}uploads/${course.image}`} alt="" />
           {editable && <label className={`course-container__image-loader-button`} htmlFor={`course-container__file-input${index}`}>Загрузить</label>}
           {editable && <input onChange={(event) => uploadImage(event, course)} type="file" id={`course-container__file-input${index}`} className="course-container__image-loader-input" />}
           <div className="course-container__info-container">
